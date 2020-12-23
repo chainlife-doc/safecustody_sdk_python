@@ -57,7 +57,8 @@ class Request(ResponseError):
         data = {
             "auth": {
                 "token": user.getAuth(),
-                "timestamp": user.getTime()
+                "timestamp": user.getTime(),
+                "api_key": user.getApiKey(),
             }
         }
         if param is not None and param is not "":
