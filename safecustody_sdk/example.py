@@ -1,6 +1,9 @@
 from safecustody_sdk.sdk import Sdk
 from safecustody_sdk.user import User
 
+# 使用sdk任何签名不需要自己实现,内部已经做好
+# 这里只是举的例子,更多详细内容请阅读文档
+
 user = User()
 
 # 对应商户后台的APPID
@@ -10,11 +13,9 @@ user.setUserid("")
 # 对应商户后台的APIKEY
 user.setApiKey("")
 # 对应商户后台的SECRETKEY
-user.setSecretKey(
-    "")
+user.setSecretKey("")
 
 sdk = Sdk(user)
-
 # TODO  请向微信群的官方人员获取
 sdk.setHost("")
 
@@ -23,7 +24,7 @@ arr, err = sdk.QueryCoinConf("btc")
 print(arr)
 print(err)
 
-# 查询币种公共信息
+# 查询币种全部信息
 arr, err = sdk.QueryCoins()
 print(arr)
 print(err)

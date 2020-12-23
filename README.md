@@ -96,9 +96,9 @@ arr,err = sdk.QueryIsInternalAddr(coin="", chain="", addr="")
 # subuserid 你的用户id             
 # addr 提币地址                      
 # amount 提币数量                    
-# memo 提币备注,内容自定义（会记录到区块链上）      
-# usertags 提币标签，内容自定义 （不会记录到区块链上）
-# user_orderid 用户自定义订单ID，具有唯一性，可避免重复订单(可选字段)
+# memo 该字段主要提供给链上支持备注的币种，内容会更新到链上       
+# usertags 用户标签, 自定义内容，一般作为订单备注使用,辅助说明
+# user_orderid 用户自定义订单ID，该字段主要是填写用户系统的订单流水号，字段具有唯一性（可选字段)
 arr,err = sdk.SubmitWithdraw(subuserid="", chain="", coin="", addr="", amount="", memo="", usertags="",user_orderid="")
 ```
 
@@ -109,9 +109,9 @@ arr,err = sdk.SubmitWithdraw(subuserid="", chain="", coin="", addr="", amount=""
 # string subuserid 你的用户id              
 # string addr 提币地址                       
 # string amount 提币数量                     
-# string memo 提币备注,内容自定义（会记录到区块链上）       
-# string usertags 提币标签，内容自定义 （不会记录到区块链上） 
-# user_orderid 用户自定义订单ID，具有唯一性，可避免重复订单(可选字段)
+# string memo 该字段主要提供给链上支持备注的币种，内容会更新到链上       
+# string usertags 用户标签, 自定义内容，一般作为订单备注使用,辅助说明 
+# user_orderid 用户自定义订单ID，该字段主要是填写用户系统的订单流水号，字段具有唯一性（可选字段)
 arr,err = sdk.ValidateWithdraw(subuserid="", chain="", coin="", addr="", amount="", memo="", usertags="",user_orderid="")
 ```
 
@@ -131,4 +131,13 @@ arr,err = sdk.QueryWithdrawStatus(coin="", chain="", withdrawid="")
 # int fromid 从哪个充值序号开始，值大于等于1,查询结果包含fromId对应的充值记录          
 # int limit 最多查询多少条记录，包含fromid这条记录                         
 arr,err = sdk.GetDepositHistory(subuserId="", chain="", coin="", fromId=0, limit=100)
+```
+
+#### [取消提币接口](https://github.com/chainlife-doc/wallet-api/blob/master/withdraw/%E5%8F%96%E6%B6%88%E6%8F%90%E5%B8%81%E6%8E%A5%E5%8F%A3.md)
+```python
+# string coin 币名                                           
+# string chain 链名                                          
+# string subuserid 你的用户id  
+# string withdrawid 提币订单ID
+arr,err = WithdrawCancel(self, subuserId, chain, coin, withdrawid)
 ```

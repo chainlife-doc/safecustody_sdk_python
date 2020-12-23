@@ -16,6 +16,7 @@ class RouteController(Request):
         "QueryWithdrawStatus": "withdraw/status.php",
         "GetDepositAddr": "deposit/addr.php",
         "QueryWithdrawHistory": "withdraw/history.php",
+        "WithdrawCancel": "withdraw/cancel.php",
     }
 
     # 单个币种查询
@@ -128,6 +129,21 @@ class RouteController(Request):
             "limit": limit,
         }
         return self._request(metohd, p)
+
+    # 取消提币接口
+    def WithdrawCancel(self, subuserId, chain, coin, withdrawid):
+        metohd = sys._getframe().f_code.co_name
+        p = {
+            "subuserid": subuserId,
+            "chain": chain,
+            "coin": coin,
+            "withdrawid": withdrawid,
+        }
+        _, err = self._request(metohd, p)
+        if err is None or err is "":
+            return True, None
+
+        return False, err
 
     def _getUrl(self, method):
         if len(self._host) == 0:
