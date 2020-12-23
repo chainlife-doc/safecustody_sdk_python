@@ -29,11 +29,19 @@ from safecustody_sdk.user import User
 
 user = User()
 
+# 对应商户后台的APPID
 user.setAppid("")
+# 对应商户后的商户id
 user.setUserid("")
-user.setSalt("")
+# 对应商户后台的APIKEY
+user.setApiKey("")
+# 对应商户后台的SECRETKEY
+user.setSecretKey(
+    "")
 
 sdk = Sdk(user)
+
+# TODO  请向微信群的官方人员获取
 sdk.setHost("")
 ``` 
 
@@ -43,7 +51,7 @@ sdk.setHost("")
 arr, err = sdk.QueryCoinConf("btc")
 ```
 
-#### [查询公共币种信息](https://github.com/chainlife-doc/wallet-api/blob/master/%E6%9F%A5%E8%AF%A2%E5%B8%81%E7%A7%8D%E4%BF%A1%E6%81%AF.md)
+#### [查询全部币种信息](https://github.com/chainlife-doc/wallet-api/blob/master/%E6%9F%A5%E8%AF%A2%E5%B8%81%E7%A7%8D%E4%BF%A1%E6%81%AF.md)
 ```python
 arr, err = sdk.GetDepositAddr([{"chain": "trx", "coin": "trx", "subuserid": "1"}])
 ```
@@ -90,7 +98,8 @@ arr,err = sdk.QueryIsInternalAddr(coin="", chain="", addr="")
 # amount 提币数量                    
 # memo 提币备注,内容自定义（会记录到区块链上）      
 # usertags 提币标签，内容自定义 （不会记录到区块链上）
-arr,err = sdk.SubmitWithdraw(subuserid="", chain="", coin="", addr="", amount="", memo="", usertags="")
+# user_orderid 用户自定义订单ID，具有唯一性，可避免重复订单(可选字段)
+arr,err = sdk.SubmitWithdraw(subuserid="", chain="", coin="", addr="", amount="", memo="", usertags="",user_orderid="")
 ```
 
 #### [提币预校验](https://github.com/chainlife-doc/wallet-api/blob/master/withdraw/%E6%8F%90%E5%B8%81%E9%A2%84%E6%A0%A1%E9%AA%8C%E6%8E%A5%E5%8F%A3.md)
@@ -102,7 +111,8 @@ arr,err = sdk.SubmitWithdraw(subuserid="", chain="", coin="", addr="", amount=""
 # string amount 提币数量                     
 # string memo 提币备注,内容自定义（会记录到区块链上）       
 # string usertags 提币标签，内容自定义 （不会记录到区块链上） 
-arr,err = sdk.ValidateWithdraw(subuserid="", chain="", coin="", addr="", amount="", memo="", usertags="")
+# user_orderid 用户自定义订单ID，具有唯一性，可避免重复订单(可选字段)
+arr,err = sdk.ValidateWithdraw(subuserid="", chain="", coin="", addr="", amount="", memo="", usertags="",user_orderid="")
 ```
 
 #### [查询工单状态](https://github.com/chainlife-doc/wallet-api/blob/master/withdraw/%E6%9F%A5%E8%AF%A2%E6%8F%90%E5%B8%81%E5%B7%A5%E5%8D%95%E7%8A%B6%E6%80%81.md)

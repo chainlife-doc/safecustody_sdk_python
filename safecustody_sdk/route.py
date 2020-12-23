@@ -24,7 +24,7 @@ class RouteController(Request):
         p = {"coin": coin}
         return self._request(metohd, p)
 
-    # 查询币种公共信息
+    # 查询币种全部信息
     def QueryCoins(self):
         metohd = sys._getframe().f_code.co_name
         return self._request(metohd, None)
@@ -71,7 +71,7 @@ class RouteController(Request):
         return True, None
 
     # 提交提币工单
-    def SubmitWithdraw(self, subuserid, chain, coin, addr, amount, memo="", usertags=""):
+    def SubmitWithdraw(self, subuserid, chain, coin, addr, amount, memo="", usertags="", user_orderid=""):
         metohd = sys._getframe().f_code.co_name
         p = {
             "subuserid": subuserid,
@@ -82,12 +82,13 @@ class RouteController(Request):
             "memo": memo,
             "usertags": usertags,
             "sign": self._user.getSign(addr, memo, usertags),
+            "user_orderid": user_orderid,
         }
 
         return self._request(metohd, p)
 
     # 提币预校验接口
-    def ValidateWithdraw(self, subuserid, chain, coin, addr, amount, memo="", usertags=""):
+    def ValidateWithdraw(self, subuserid, chain, coin, addr, amount, memo="", usertags="", user_orderid=""):
         metohd = sys._getframe().f_code.co_name
         p = {
             "subuserid": subuserid,
@@ -98,6 +99,7 @@ class RouteController(Request):
             "memo": memo,
             "usertags": usertags,
             "sign": self._user.getSign(addr, memo, usertags),
+            "user_orderid": user_orderid,
         }
         _, err = self._request(metohd, p)
         if err is None or err is "":
