@@ -139,5 +139,5 @@ arr,err = sdk.GetDepositHistory(subuserId="", chain="", coin="", fromId=0, limit
 # string chain 链名                                          
 # string subuserid 你的用户id  
 # string withdrawid 提币订单ID
-arr,err = WithdrawCancel(self, subuserId, chain, coin, withdrawid)
+arr,err = sdk.WithdrawCancel(self, subuserId, chain, coin, withdrawid)
 ```
