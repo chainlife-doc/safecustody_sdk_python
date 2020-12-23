@@ -3,12 +3,19 @@ from safecustody_sdk.user import User
 
 user = User()
 
+# 对应商户后台的APPID
 user.setAppid("")
-user.setUserid("26")
-user.setSalt(
+# 对应商户后的商户id
+user.setUserid("")
+# 对应商户后台的APIKEY
+user.setApiKey("")
+# 对应商户后台的SECRETKEY
+user.setSecretKey(
     "")
 
 sdk = Sdk(user)
+
+# TODO  请向微信群的官方人员获取
 sdk.setHost("")
 
 # 单币种查询

@@ -4,17 +4,20 @@ import hashlib
 
 # 用户信息类
 class User:
-    # 用户id
+    # 对应商户后的商户id
     __userid = ""
 
-    # appid
+    # 对应商户后台的APPID
     __appid = ""
 
-    # salt
-    __salt = ""
+    # 对应商户后台的SECRETKEY
+    __secretKey = ""
 
     # 时间戳
     __time = ""
+
+    # 对应商户后台的APIKEY
+    __apiKey = ""
 
     # 设置用户id
     def setUserid(self, useid):
@@ -32,13 +35,19 @@ class User:
     def getAppid(self):
         return self.__appid
 
-    # 设置salt
-    def setSalt(self, salt):
-        self.__salt = salt
+    # 设置SECRETKEY
+    def setSecretKey(self, secretKey):
+        self.__secretKey = secretKey
 
-    # 获取salt
-    def getSalt(self):
-        return self.__salt
+    # 获取SECRETKEY
+    def getSecretKey(self):
+        return self.__secretKey
+
+    def setApiKey(self,apiKey):
+        self.__apiKey = apiKey
+
+    def getApiKey(self):
+        return self.__apiKey
 
     # 获取用户验证时间
     def getTime(self):
@@ -48,12 +57,12 @@ class User:
 
     # 获取token
     def getAuth(self):
-        tokenStr = self.__appid + "_" + self.__salt + "_" + self.__userid + "_" + self.getTime()
+        tokenStr = self.__apiKey + "_" + self.__secretKey + "_" + self.__userid + "_" + self.getTime()
         return hashlib.md5(tokenStr.encode("utf-8")).hexdigest()
 
     # 获取签名
     def getSign(self, addr, memo="", usertags=""):
-        signStr = self.__appid + "_" + self.__salt + "_" + self.__userid + "_" + self.getTime() + "_" + addr + "_" + memo + "_" + usertags
+        signStr = self.__apiKey + "_" + self.__secretKey + "_" + self.__userid + "_" + self.getTime() + "_" + addr + "_" + memo + "_" + usertags
         return hashlib.md5(signStr.encode("utf-8")).hexdigest()
 
     def unsetTime(self):
