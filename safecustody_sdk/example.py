@@ -68,3 +68,8 @@ print(err)
 arr, err = sdk.QueryWithdrawHistory(subuserId="26", chain="trx", coin="trx", fromId=0, limit=100)
 print(arr)
 print(err)
+
+# 取消提币接口
+sdk.WithdrawCancel(subuserId="26", chain="trx", coin="trx", withdrawid="")
+print(arr)
+print(err)
