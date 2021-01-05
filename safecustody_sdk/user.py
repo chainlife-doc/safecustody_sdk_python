@@ -43,7 +43,7 @@ class User:
     def getSecretKey(self):
         return self.__secretKey
 
-    def setApiKey(self,apiKey):
+    def setApiKey(self, apiKey):
         self.__apiKey = apiKey
 
     def getApiKey(self):
@@ -61,8 +61,15 @@ class User:
         return hashlib.md5(tokenStr.encode("utf-8")).hexdigest()
 
     # 获取签名
-    def getSign(self, addr, memo="", usertags=""):
-        signStr = self.__apiKey + "_" + self.__secretKey + "_" + self.__userid + "_" + self.getTime() + "_" + addr + "_" + memo + "_" + usertags
+    def getSign(self, addr, memo="", usertags="", userOrderId=""):
+
+        str = ""
+        if userOrderId == "":
+            str = "_" + userOrderId
+
+        signStr = self.__apiKey + "_" + self.__secretKey + "_" + self.__userid + "_" + self.getTime() + "_" + addr + "_" + memo + "_" + usertags + \
+                  str
+
         return hashlib.md5(signStr.encode("utf-8")).hexdigest()
 
     def unsetTime(self):

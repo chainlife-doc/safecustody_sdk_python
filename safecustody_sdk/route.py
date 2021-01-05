@@ -82,7 +82,7 @@ class RouteController(Request):
             "amount": amount,
             "memo": memo,
             "usertags": usertags,
-            "sign": self._user.getSign(addr, memo, usertags),
+            "sign": self._user.getSign(addr, memo, usertags,user_orderid),
             "user_orderid": user_orderid,
         }
 
@@ -99,7 +99,7 @@ class RouteController(Request):
             "amount": amount,
             "memo": memo,
             "usertags": usertags,
-            "sign": self._user.getSign(addr, memo, usertags),
+            "sign": self._user.getSign(addr, memo, usertags,user_orderid),
             "user_orderid": user_orderid,
         }
         _, err = self._request(metohd, p)
