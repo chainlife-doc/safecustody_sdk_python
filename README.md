@@ -6,20 +6,7 @@
 #### pip安装
 
 - `pip install safecustody_sdk`
-
-
-#### 源码安装 
     
-- 直接从GitHup下载源码,把整个`safecustody_sdk`包放入您的项目目录中,  
-  然后在代码里引入:
-     ```python
-      from safecustody_sdk.sdk import Sdk
-      from safecustody_sdk.user import User
-    ```
-- 安装依赖
-    ```python
-    pip install -r requirements.txt
-    ```       
 # 例子
 
 #### 创建sdkApi
