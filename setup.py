@@ -4,7 +4,7 @@ from setuptools import setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(name='safecustody_sdk',
-      version='1.2.0',
+      version='1.3.0',
       description='safecustody wallet api sdk',
       author='wangxudong',
       author_email='834971685@qq.com',
