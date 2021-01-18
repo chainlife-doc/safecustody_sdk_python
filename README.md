@@ -128,3 +128,12 @@ arr,err = sdk.GetDepositHistory(subuserId="", chain="", coin="", fromId=0, limit
 # string withdrawid 提币订单ID
 arr,err = sdk.WithdrawCancel(self, subuserId, chain, coin, withdrawid)
 ```
+
+### [查询区块高度](https://github.com/chainlife-doc/wallet-api/blob/master/%E6%9F%A5%E8%AF%A2%E5%B8%81%E7%A7%8D%E8%8A%82%E7%82%B9%E9%AB%98%E5%BA%A6.md)
+```python
+# string coin 币名                                           
+# string chain 链名  
+arr,err = sdk.BlockHeight(coin="btc", chain="btc")
+print(arr)
+print(err)
+```

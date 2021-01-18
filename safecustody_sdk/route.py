@@ -17,6 +17,7 @@ class RouteController(Request):
         "GetDepositAddr": "deposit/addr.php",
         "QueryWithdrawHistory": "withdraw/history.php",
         "WithdrawCancel": "withdraw/cancel.php",
+        "BlockHeight": "blockheight.php",
     }
 
     # 单个币种查询
@@ -82,7 +83,7 @@ class RouteController(Request):
             "amount": amount,
             "memo": memo,
             "usertags": usertags,
-            "sign": self._user.getSign(addr, memo, usertags,user_orderid),
+            "sign": self._user.getSign(addr, memo, usertags, user_orderid),
             "user_orderid": user_orderid,
         }
 
@@ -99,7 +100,7 @@ class RouteController(Request):
             "amount": amount,
             "memo": memo,
             "usertags": usertags,
-            "sign": self._user.getSign(addr, memo, usertags,user_orderid),
+            "sign": self._user.getSign(addr, memo, usertags, user_orderid),
             "user_orderid": user_orderid,
         }
         _, err = self._request(metohd, p)
@@ -144,6 +145,15 @@ class RouteController(Request):
             return True, None
 
         return False, err
+
+    # 查询区块高度
+    def BlockHeight(self, coin, chain):
+        metohd = sys._getframe().f_code.co_name
+        p = {
+            "chain": chain,
+            "coin": coin,
+        }
+        return self._request(metohd, p)
 
     def _getUrl(self, method):
         if len(self._host) == 0:

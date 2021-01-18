@@ -70,6 +70,11 @@ print(arr)
 print(err)
 
 # 取消提币接口
-sdk.WithdrawCancel(subuserId="26", chain="trx", coin="trx", withdrawid="")
+arr,err = sdk.WithdrawCancel(subuserId="26", chain="trx", coin="trx", withdrawid="")
+print(arr)
+print(err)
+
+# 查询区块高度
+arr,err = sdk.BlockHeight(coin="btc", chain="btc")
 print(arr)
 print(err)
