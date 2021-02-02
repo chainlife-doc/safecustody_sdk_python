@@ -64,11 +64,11 @@ class RouteController(Request):
             "addr": addr
         }
         r, err = self._request(metohd, p)
-        if r is None and r is "":
+        if r == None and r == "":
             return False, err
-        if (err is not None) and (err is not ""):
+        if (err != None) and (err != ""):
             return False, err
-        if r["exist"] is 0:
+        if r["exist"] == 0:
             return False, None
         return True, None
 
@@ -104,7 +104,7 @@ class RouteController(Request):
             "user_orderid": user_orderid,
         }
         _, err = self._request(metohd, p)
-        if err is None or err is "":
+        if err == None or err == "":
             return True, None
 
         return False, err
@@ -141,7 +141,7 @@ class RouteController(Request):
             "withdrawid": withdrawid,
         }
         _, err = self._request(metohd, p)
-        if err is None or err is "":
+        if err == None or err == "":
             return True, None
 
         return False, err
@@ -162,7 +162,7 @@ class RouteController(Request):
         if self._host[-1] != "/":
             self._host = self._host + "/"
 
-        if (method in self.__route) is True:
+        if (method in self.__route) == True:
             method = self.__route[method]
 
         url = self._host + method

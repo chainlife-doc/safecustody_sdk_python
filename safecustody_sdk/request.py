@@ -21,15 +21,15 @@ class Request(ResponseError):
         str = ""
         param = self.__requestParam(param, user=self._user)
 
-        if param is not None and len(param) > 0 and param is not "":
+        if param != None and len(param) > 0 and param != "":
             str = json.dumps(param)
 
         url = self._getUrl(method)
-        if url is None or url is "":
+        if url == None or url == "":
             self._setSdkError("url is None")
             return None, self.getError()
         r = self.__post(url, str)
-        if r is None:
+        if r == None:
             self._setSdkError("请求参数返回为空")
             return None, self.getError()
 
@@ -61,7 +61,7 @@ class Request(ResponseError):
                 "api_key": user.getApiKey(),
             }
         }
-        if param is not None and param is not "":
+        if param != None and param != "":
             data = {**data, **param}
 
         arr["data"] = data
@@ -72,7 +72,7 @@ class Request(ResponseError):
 
     # 解析响应参数
     def __parseResp(self, param):
-        if param is None or param is "":
+        if param == None or param == "":
             self._setSdkError("解析失败,返回值是空")
             return None
 
@@ -82,7 +82,7 @@ class Request(ResponseError):
             self._setSdkError("解析失败,不存在的data")
             return None
 
-        if resp["data"]["emsg"] is not "":
+        if resp["data"]["emsg"] != "":
             self._setRequestError(resp["data"]["emsg"])
             return None
 

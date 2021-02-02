@@ -64,7 +64,7 @@ class User:
     def getSign(self, addr, memo="", usertags="", userOrderId=""):
 
         str = ""
-        if userOrderId == "":
+        if userOrderId != "":
             str = "_" + userOrderId
 
         signStr = self.__apiKey + "_" + self.__secretKey + "_" + self.__userid + "_" + self.getTime() + "_" + addr + "_" + memo + "_" + usertags + \
